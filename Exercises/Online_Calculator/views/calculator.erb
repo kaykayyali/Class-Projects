@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+	<body>
+	<div>
+	<img src = "calc_icon.jpg" height = "125" width = "125">
+	
+	<aside>
+		<form action="/result" method="POST">
+		   <label>Enter first number</label>
+		   <br>
+		   <input name="user_num1" type="text" value = <%= @memory %> >
+		   <br>
+		   <label>Enter second number</label>
+		   <br>
+		   <input name="user_num2" type="text">
+		   <br>
+		   <!-- <label>Enter operation (add, divide, multiply, subtract)</label>
+		   <br> -->
+		  <!--  <input name="operation" type="text">
+		   <br> -->
+		   <!-- <button type="submit"> Calculate </button> -->
+
+		   <button type="submit" name="operation" value="add">Add</button>
+		   <button type="submit" name="operation" value="subtract">Subtract</button>
+		   <br>
+		   <button type="submit" name="operation" value="divide">Divide</button>
+		   <button type="submit" name="operation" value="multiply">Multiply</button>
+		   </form>
+
+		   <form action="/calculator" method="POST">
+		   <button type ="submit" name="memory" value = "return">MR</button>
+		   <button type ="submit" name="memory" value = "clear">MC</button>
+		   </form>
+		   </aside>
+		   </div>
+	</body>
+</html>

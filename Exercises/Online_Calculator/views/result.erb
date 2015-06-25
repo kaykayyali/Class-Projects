@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Calculator Result</title>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	</head>
+
+	<body>
+		<div>
+			<h1> Your result has been calculated as : <strong><%= @result%> </strong> </h1>
+			
+			<form action= "/save_answer" method = "POST">
+			<button type ="submit" name="save" value = <%= @result %> > Save Answer </button>
+			
+			</form>
+		</div>
+	</body>
+</html>
+
