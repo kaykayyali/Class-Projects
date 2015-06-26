@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<%= erb(:header, :layout => false) %>
+<body>
+
+		<div>
+			<div id="greenBack">
+				<div style="padding-top: 50px;">
+					<form action="/search" method="POST">
+						<h1>Welcome To Movie Trivia!</h1>
+						<label>Please enter a Movie Genre</label>
+						<br>
+						<input type="search" name = "movie_name" placeholder = "Movie genre" style="text-align:center;">
+						<br>
+						<br>
+						<button type="submit">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

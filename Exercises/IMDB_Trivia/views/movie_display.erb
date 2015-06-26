@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<%= erb(:header, :layout => false) %>
+<body>
+
+<% if @validAnswer != "first" %>
+<div class="answerbox">
+<%= "#{@validAnswer}! You currently have :" %>
+<br>
+<%= "#{@correct} Correct and #{@incorrect} Incorrect!" %>
+
+</div>
+
+<% end%>
+<div class="questionbox">
+<%= @cur_question.question %>
+</div>
+	<div id="masterbox">
+
+			<div id="postercontainer">
+			<% counter = 0 %>
+			<% @trivia_movies.each do |movie| %>
+			<% url = movie.poster %>
+			<%counter +=1 %>
+					<div id="posterbox">
+					<form action="/check_answer" method="POST">
+					<button type="submit" name = "answer" value= "<%= movie.title %>" id = "posterbutton" ><img src="<%= url%>" id = "poster"></button>
+						</form>
+
+					</div>
+					<% if (counter % 3 == 0) && counter < 9 %>
+						<%=  '</div> <div id="postercontainer"> '%>
+						<%  %>
+						<% end %>
+			<% end %>
+			</div>
+	</div>
+</body>
+</html>
