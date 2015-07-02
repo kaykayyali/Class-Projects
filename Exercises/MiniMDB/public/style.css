@@ -1,0 +1,72 @@
+body {
+	background-color: grey;
+	font-family: Helvetica;
+	text-align: center;
+}
+
+nav {
+	text-align: center;
+	list-style: none;
+	padding-bottom: 25px;
+}
+input {
+	font-size: 24px;
+}
+button {
+	margin-top: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+
+.master {
+	background-color: lightgray;
+	text-align: center;
+	margin: auto;
+	width: 80%;
+	border-style: solid;
+	height: 600px;
+}
+
+#title {
+	background-color: #FFFFCC;
+	border-style: solid;
+	margin: auto;
+	width: 20%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+}
+#newmovieform {
+	background-color: #FFFFCC;
+	border-style: solid;
+	margin: auto;
+	width: 30%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+}
+#moviedisplay {
+	background-color: #FFFFCC;
+	border-style: solid;
+	margin: auto;
+	width: 90%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+}
+.darkgreen {
+	background-color: darkgreen;
+}
+.green {
+background-color: green;
+}
+.yellow {
+background-color: yellow;
+}
+.red {
+background-color: red;
+}
+
+
+
