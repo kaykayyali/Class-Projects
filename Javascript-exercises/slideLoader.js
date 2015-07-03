@@ -13,4 +13,4 @@ fs.readFile(path, 'utf8', function(error, content) {
 });
 }
 
-module.exports = slideLoader;
+module.exports = slideLoader; 

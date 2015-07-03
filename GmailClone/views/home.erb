@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="gmail.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	
+</head>
+
+
+
+
+
+	<body>
+	<%= erb(:nav, :layout => false) %>
+		<div class="container-fluid">
+			<div class="col-lg-2" style="padding-top:8px; padding-bottom:1px;">
+				<span style = "color:#d14836"><h4>Gmail <span class="caret"></span></h4></span>
+			</div>
+
+			<div class="col-lg-6" style="padding-top:10px; padding-bottom:1px;">
+				
+			</div><ol class="list-inline edit">
+					<li><button type="button" class="btn btn-default btn-edit"><span class="glyphicon glyphicon-unchecked"></span></button></li>
+					<li><button type="button" class="btn btn-default btn-edit"><span class="glyphicon glyphicon-repeat"></span></button></li>
+					<li><button type="button" class="btn btn-default btn-edit">More<span class= "caret"></span></button></li>
+				</ol>
+
+			<div class="col-lg-4" style="padding-top:8px; padding-bottom:1px;text-align:right;">
+			<span style="line-height:-1">1-50 of 3,577</span>
+
+				<div class="btn-group" style="margin-left:15px;">
+					<button class="btn btn-default btn-edit-tool"><span class="glyphicon glyphicon-chevron-left"></span></button>
+					<button class="btn btn-default btn-edit-tool"><span class="glyphicon glyphicon-chevron-right"></span></button>
+				</div>
+
+				<div class="btn-group" style="margin-left:15px;">
+					<button class="btn btn-default btn-edit-tool"><i class="fa fa-keyboard-o"></i></span></button>
+					<button class="btn btn-default btn-edit-tool"><i class="caret"></i></button>
+				</div>
+				
+				<button class="btn btn-default btn-edit-tool" style="margin-left:15px;"><i class="fa fa-cog"></i></button>
+				
+			</div>
+
+
+
+
+
+
+
+		</div>
+	</body>
+
+
+
+
+
+
+</html>
