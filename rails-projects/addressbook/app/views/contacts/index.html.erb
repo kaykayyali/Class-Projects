@@ -1,0 +1,30 @@
+<aside>
+	<div>
+		<form action="search" method="POST">
+			<label>Search by name</label>
+			<br>
+			<input type="search" name="search_field">
+			<br>
+			<button type="submit">Search!</button>
+			<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+		</form>
+		<a href="/add">Create New</a>
+	</div>
+</aside>
+
+<div>
+	<h1>Contacts index:</h1>
+		<ul>
+			<% @contacts.each do |contact| %>
+				<li> <a href="show/?id=<%=contact.id%>"> <%= contact.name %></a> </li>
+			<%end%>
+		</ul>
+</div>
+
+
+
+
+
+
+
+<a href="\add">Create New</a>
