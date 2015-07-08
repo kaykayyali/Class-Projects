@@ -1,0 +1,32 @@
+<h1>All shortened links</h1>
+
+<ul>
+	<% @links.each do |link| %>
+		<li> 	<a href="show/<%=link.shortlink%>"> <%= link.link %></a>
+		<br>
+				______________________
+				<br>
+				ShortLink: localhost:3000/show/<%= link.shortlink %>
+				<br>
+				
+				______________________
+				<br>
+				Times visited: <%= link.times_visited %>
+				<br>
+				______________________
+				<br>
+				Created on: <%= link.created_at %>
+				<br>
+				<br>
+				<br>
+		</li>
+		<% end %>
+
+
+
+</ul>
+
+<a href="/add">Add new Link</a>
+<br>
+<a href="/most_recently_visited">Most Visited</a>
+	

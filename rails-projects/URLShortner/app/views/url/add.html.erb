@@ -1,0 +1,11 @@
+<h1>Make a new Shortened URL !!!! </h1>
+
+<form action='create' method="POST">
+<Label>Input the Url you desire to shorten</Label>
+<br>
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+<input type="text" name="user_link" placeholder="http://" value="">
+<button type="submit">Go!</button>
+
+
+</form>

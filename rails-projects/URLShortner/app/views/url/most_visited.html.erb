@@ -1,0 +1,14 @@
+<h1>Most Visited</h1>
+<ul>
+<% @links.each do |link| %>
+	<li>
+		Link: <%= link.link %>
+		<br>
+		Shortlink: <%= link.shortlink %>
+		<br>
+		Times Visited: <%= link.times_visited %>
+		<br>
+		<br>
+	</li>
+	<% end %>
+</ul>
