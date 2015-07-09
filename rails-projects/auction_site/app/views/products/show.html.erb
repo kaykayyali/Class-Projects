@@ -1,1 +1,25 @@
 <h1><%= @product.title %> Details</h1>
+
+<p>Product Description: <%= @product.description %> </p>
+<p>Deadline for Bidding: <%= @product.deadline %>
+
+
+<ul>
+   <% @product.bids.each do |bid| %>
+   <li>
+   		 <%= bid.amount %>
+   		
+   	</li>
+   	<% end %>
+   	</ul>
+
+
+
+ 
+<%= form_for([@user,@product,@bid]) do |f| %>
+	<%= f.label :amount %> 
+	<br>
+	<%= f.text_field :amount %>
+	<br>
+	<button type="Submit">Add new Bid</button>
+	<% end %>

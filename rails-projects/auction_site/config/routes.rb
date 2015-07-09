@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
 resources :users do 
-  resources :products
+  resources :bids
+    resources :products do  
+      resources :bids
+    end
 end
 get '/products' => 'products#all'
+get '/' => 'users#add'
 
 
 

@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
 		render 'all'
 	end
 	def show
+		@bid = Bid.new
+		@user = User.find(session[:user_id])
 		@product = Product.find(params[:id])
 		render 'show'
 		
