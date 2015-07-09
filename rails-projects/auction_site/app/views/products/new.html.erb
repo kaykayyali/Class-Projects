@@ -1,0 +1,21 @@
+<h1>New Product</h1>
+<%= form_for([@user, @product]) do |f| %>
+		<%= f.label :title %> 
+		<br>
+		<%= f.text_field :title %>
+		
+		<br>
+		<%= f.label :description %> 
+		<br>
+		<%= f.text_field :description %>
+		
+		<br>
+		<%= f.label :deadline %> 
+		<br>
+		<%= f.date_field :deadline %>
+		
+		<br>
+		<br>
+
+		<button type="submit">Create New Product</button>
+	<% end%>

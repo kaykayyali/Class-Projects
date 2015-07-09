@@ -1,0 +1,17 @@
+<h1>Products</h1>
+
+
+
+<ul>
+	<% @products.each do |product| %>
+		<li>
+			<a href="<%= product_path(product.id) %>"><%= product.title %></a>
+			-
+			<%= product.description %>
+			-
+			<%= product.deadline %>
+		</li>
+		<% end %>
+</ul>
+
+<a href="<%= new_product_path%>">New Product</a>
