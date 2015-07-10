@@ -1,0 +1,43 @@
+<div class="col-lg-2">
+
+</div>
+	<div class="col-lg-8">
+					
+			<div class="panel panel-default">
+
+			<div class="panel-body">
+
+			<h1 class="jumbotron"> <%= @concert.artist %> <br><small><%= "At " + @concert.venue%></small></h1>
+				<div class="container-fluid">
+				<div class="col-xs-6">
+					<img class= "img-rounded" src="<%=@artist.images[0]['url']%>" width = "200px">
+						
+
+						
+						</ul>
+						<iframe src="<%= @artist.top_tracks(:US)[0].preview_url%>" width="200" height="70" frameborder="0" allowtransparency="true"></iframe>
+						
+				</div>
+					<div class="col-xs-6">
+					<p> <%= @concert.artist + " At " + @concert.venue + " ticket price is: $" + @concert.ticket_price.to_s%> </p>
+					<p> <%= "Concert will be held on " + pretty_date(@concert.date) + " in beautiful " + @concert.city %></p>
+				<p><strong>Genres:</strong></p> 
+						<ul>
+						<% @artist.genres.each do |genre| %> 
+						
+						<li>
+							<p><%= genre.upcase %></p>
+						</li>
+						
+						<%end%>
+					</div>
+				</div>
+			</div>
+
+
+
+	</div>
+</div>
+<div class="col-lg-2">
+			
+</div>
