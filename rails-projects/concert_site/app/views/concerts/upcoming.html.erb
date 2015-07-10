@@ -7,7 +7,7 @@
 
 				<ul>
 
-					<% @concerts_month.each do |concert| %>
+					<% @concerts_today.each do |concert| %>
 						<li>
 							<a href="<%= concert_path(concert.id)%>" style = "font-size: 20px"><%= concert.artist %></a>  <p><%= pretty_date(concert.date) %></p>
 						</li>
@@ -29,7 +29,7 @@
 			<div class="panel-body">
 			<div class="container-fluid">
 			<ul>
-				<% @concerts_today.each do |concert| %>
+				<% @concerts_upcoming.each do |concert| %>
 				<div class="col-xs-6">
 					<a href="<%= concert_path(concert.id)%>"> <h3><%= concert.artist %></a>  <small><%= concert.city %></small></h3></a>
 				</div>

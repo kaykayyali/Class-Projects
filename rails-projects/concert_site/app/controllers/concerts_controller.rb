@@ -2,12 +2,20 @@
 class ConcertsController < ApplicationController
 
 	def show
-
+		@comment = Comment.new
 		@concert = Concert.find(params[:id])
 		artists =  RSpotify::Artist.search(@concert.artist)
 		@artist = artists[0]
 		
 		render 'show'
+	end
+
+	def upcoming
+		@concerts_today = Concert.where(:date => Date.today)
+		@concerts_upcoming = Concert.where('date >= ?', DateTime.now)
+		.order("extract(day from date) ASC")
+		
+			render 'upcoming'
 	end
 
 	def new
@@ -35,7 +43,7 @@ class ConcertsController < ApplicationController
 
 	def home
 		@concerts_today = Concert.where(:date => Date.today)
-		@concerts_month = Concert.where('extract(month from date) = ?', Time.now.month)
+		@concerts_month = Concert.where('extract(month from date) = ?', Time.now.month).where('extract(year from date) = ?', Time.now.year).order("extract(day from date) ASC")
 			render 'home'
 	end
 

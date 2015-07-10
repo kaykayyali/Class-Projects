@@ -20,14 +20,18 @@
  	padding-top: 70px;
  	padding-bottom: 70px;
  	background-color: grey;
- 	background-image: url("/");
- 	background-position: center;
+ 	background-image: url('main_background.jpg');
+ 	
  }
  ul {
  	list-style: none;
  }
  .panel {
- 	background-color: rgba(0, 0, 0, 1);
+ 	background-color: rgba(0, 0, 0, .5);
+ 	border-color: none;
+ }
+ .panel-default {
+ 	border-color: transparent;
  }
  .panel-heading {
  	background-color: rgba(221, 138, 138, 0.9);
@@ -38,11 +42,18 @@ iframe {
 }
 p {
 	color: white;
-	font-size: 18px;
+	font-size: 16px;
+
 }
 
  .panel_white {
  	background-color: rgba(255, 255, 255, 1);
+ }
+ .panel-default>.panel_trans {
+ 	background-color: transparent;
+ }
+  .panel_white_trans {
+ 	background-color: rgba(255, 255, 255, .8);
  }
 
 

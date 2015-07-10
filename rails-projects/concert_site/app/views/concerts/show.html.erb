@@ -1,43 +1,86 @@
-<div class="col-lg-2">
+<div class="col-lg-1">
 
 </div>
-	<div class="col-lg-8">
+	<div class="col-lg-7">
 					
 			<div class="panel panel-default">
 
-			<div class="panel-body">
-
-			<h1 class="jumbotron"> <%= @concert.artist %> <br><small><%= "At " + @concert.venue%></small></h1>
-				<div class="container-fluid">
+			<div class="panel-body" style="padding: 0px;">
+<div class="container-fluid">
+			<h1 class="jumbotron" style="padding: 5px"> <%= @concert.artist %> <br><small><%= "At " + @concert.venue%></small></h1>
+				
 				<div class="col-xs-6">
-					<img class= "img-rounded" src="<%=@artist.images[0]['url']%>" width = "200px">
-						
+					<img class= "img-rounded" src="<%=@artist.images[0]['url']%>" width = "200px">						
+						<iframe src="<%= @artist.top_tracks(:US)[0].preview_url%>" width="200" height="70" frameborder="0" allowtransparency="true"></iframe>					
+				</div>
 
-						
-						</ul>
-						<iframe src="<%= @artist.top_tracks(:US)[0].preview_url%>" width="200" height="70" frameborder="0" allowtransparency="true"></iframe>
-						
-				</div>
-					<div class="col-xs-6">
-					<p> <%= @concert.artist + " At " + @concert.venue + " ticket price is: $" + @concert.ticket_price.to_s%> </p>
-					<p> <%= "Concert will be held on " + pretty_date(@concert.date) + " in beautiful " + @concert.city %></p>
-				<p><strong>Genres:</strong></p> 
-						<ul>
-						<% @artist.genres.each do |genre| %> 
-						
-						<li>
-							<p><%= genre.upcase %></p>
-						</li>
-						
-						<%end%>
+						<div class="col-xs-6">
+							<p> <%= @concert.artist + " At " + @concert.venue + " ticket price is: $" + @concert.ticket_price.to_s%> </p>
+							<p> <%= "Concert will be held on " + pretty_date(@concert.date) + " in beautiful " + @concert.city %></p>
+						<p><strong>Genres:</strong></p> 
+								<ul>
+								<% @artist.genres.each do |genre| %> 
+								
+								<li>
+									<p><small><%= genre.upcase %></small></p>
+								</li>
+								
+								<%end%>
+								</ul>
+								<div class="panel panel-default panel_white_trans" style="padding: 10px;">	
+				<div class="panel-heading panel_trans text-center">
+					<h1 class="panel-title">Add Comment</h1>
+				</div>	
+				<div class="panel-body">
+					<%= form_for([@concert, @comment]) do |f| %>
+
+					<div class="input-group">
+						<%= f.label :title, class: "form-label" %>
+						<%= f.text_field :title, class: "form-control"%>
 					</div>
+					<div class="input-group">
+						<%= f.label :description, class: "form-label" %>
+						<%= f.text_field :description, class: "form-control"%>
+					</div>
+					
+					<button class="btn btn-primary" style="margin-top: 15px" type="submit">Submit</button>
+				
+					<%end%>
 				</div>
+			</div>
+						</div>
+
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="col-lg-4">
+	<div class="container-fluid">
+	
+			<div class="panel panel-default" style="padding: 10px;">
+						
+				<div class="panel-heading text-center">
+					<h1 class="panel-title">Comments</h1>
+				</div>	
+
+				
+			
 			</div>
 
 
+			<% @concert.comments.each do |comment| %>
 
-	</div>
-</div>
-<div class="col-lg-2">
+				<div class="panel panel-default" style="padding: 10px;">
+					<div class="panel-heading">
+						<h4><%= comment.title %></h4>
+						<h4><small><%= comment.description %></small></h4>
+					</div>	
+				</div>
+			<% end %>
 			
+
+			
+
+	</div>		
 </div>

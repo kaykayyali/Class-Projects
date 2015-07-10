@@ -1,16 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-concert = Concert.create( :artist => "John Mayer", :date => DateTime.new(2015, 7, 23), :venue => "Cruzan Amphitheatre", :city => "Boca Raton", :ticket_price => 45, :description => "")
-concert = Concert.create( :artist => "DeadMau5", :date => DateTime.new(2016, 1, 3), :venue => "Liv @ Fountaine Bleu", :city => "Miami Beach", :ticket_price => 105, :description => "")
-concert = Concert.create( :artist => "Kaskade", :date => DateTime.new(2014, 2, 20), :venue => "American Airlines Arena", :city => "Miami", :ticket_price => 85, :description => "")
-concert = Concert.create( :artist => "ACDC", :date => DateTime.new(1985, 7, 1), :venue => "Landshark Stadium", :city => "Miami", :ticket_price => 15, :description => "")
-concert = Concert.create( :artist => "John Mayer", :date => DateTime.new(2015, 7, 23), :venue => "Cruzan Amphitheatre", :city => "Boca Raton", :ticket_price => 45, :description => "")
-concert = Concert.create( :artist => "DeadMau5", :date => DateTime.new(2016, 1, 3), :venue => "Liv @ Fountaine Bleu", :city => "Miami Beach", :ticket_price => 105, :description => "")
-concert = Concert.create( :artist => "Kaskade", :date => DateTime.new(2014, 2, 20), :venue => "American Airlines Arena", :city => "Miami", :ticket_price => 85, :description => "")
-concert = Concert.create( :artist => "ACDC", :date => DateTime.new(2015, 7, 10), :venue => "Landshark Stadium", :city => "Miami", :ticket_price => 15, :description => "")
+Comment.create!([
+  {concert_id: 1, description: "This is going to be the best concert ever", title: "Hardcore Fan"},
+  {concert_id: 2, description: "This is going to be the best concert ever", title: "Hardcore Fan"},
+  {concert_id: 3, description: "This is going to be the best concert ever", title: "Hardcore Fan"},
+  {concert_id: 4, description: "This is going to be the best concert ever", title: "Hardcore Fan"},
+  {concert_id: 5, description: "This is going to be the best concert ever", title: "Hardcore Fan"},
+  {concert_id: 6, description: "This is going to be the best concert ever", title: "Hardcore Fan"},
+  {concert_id: 1, description: "Can't wait to see him!", title: "Gravity Lover"},
+  {concert_id: 6, description: "LETS RAGE!", title: "Borgmania"}
+])
+Concert.create!([
+  {artist: "John Mayer", date: "2015-07-23 00:00:00", venue: "Cruzan Amphitheatre", city: "Boca Raton", ticket_price: 45, description: ""},
+  {artist: "DeadMau5", date: "2016-01-03 00:00:00", venue: "Liv @ Fountaine Bleu", city: "Miami Beach", ticket_price: 105, description: ""},
+  {artist: "Kaskade", date: "2014-02-20 00:00:00", venue: "American Airlines Arena", city: "Miami", ticket_price: 85, description: ""},
+  {artist: "ACDC", date: "1985-07-01 00:00:00", venue: "Landshark Stadium", city: "Miami", ticket_price: 15, description: ""},
+  {artist: "Above and Beyond", date: "2015-07-21 00:00:00", venue: "Arkadia", city: "Miami", ticket_price: 40, description: "Long ass Show"},
+  {artist: "Borgore", date: "2015-07-10 00:00:00", venue: "Mansion", city: "Miami", ticket_price: 20, description: "Party every night!"}
+])
