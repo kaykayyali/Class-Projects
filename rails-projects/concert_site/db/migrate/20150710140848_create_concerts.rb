@@ -1,4 +1,4 @@
-class CreateConcerts < ActiveRecord::Migration
+Nclass CreateConcerts < ActiveRecord::Migration
   def change
 
     create_table :concerts do |t|

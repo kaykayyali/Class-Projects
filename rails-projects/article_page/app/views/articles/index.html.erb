@@ -1,0 +1,65 @@
+
+<div class="container">
+<%= render './partials/header' %>
+	
+
+<div class="jumbotron">
+<h1 class="title-header text-center"> PizzaNews <small>A blog on fine food</small></h1>
+</div>
+
+
+
+
+<div class=" row">
+<div class="col-lg-6">
+
+
+
+<div class="panel panel-default" style="border-style: solid;">
+<div class="panel-heading">
+<h2 class="title-header"> Nizar Khalife <small> Pizza Lover</small></h2>
+</div>
+<div class="panel-body">
+<p>The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he, who in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy my brothers. And you will know my name is the Lord when I lay my vengeance upon thee.</p>
+</div>
+</div>
+</div>
+ <div class="col-lg-6">
+ 	<img  class="img-circle pull-right" src="http://photos1.meetupstatic.com/photos/member/6/d/6/c/highres_142288012.jpeg" width="40%">
+ </div>
+</div>
+
+	<div class="row">
+
+				<div class="col-lg-3"></div>
+							<div class="col-lg-6">
+							<div class="panel panel-default" style="padding: 15px; background-color: grey;">
+							<% @articles.each do |article| %>
+								<div class="panel panel-default ">
+									
+										<div class="panel-heading">
+										<h1><%= article.title %></h1>
+										</div>
+
+										<div class="panel-body">
+										<h3 class="title-header">Summary:</h3> <%= article.summary %>
+										<br>
+
+										<h3 class="title-header">Content : </h3><%= article.content %>
+									</div>
+								</div>
+							<% end %>
+							</div>
+							</div>
+				<div class="col-lg-3"></div>
+
+
+
+	</div>
+
+
+ </div>
+
+
+
+

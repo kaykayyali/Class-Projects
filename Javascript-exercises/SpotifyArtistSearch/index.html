@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Spotify Artist Search</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+<body>
+<style>
+body{
+	background-color: lightgrey;
+}
+	ul {
+		list-style: none;
+	}
+	button {
+		border-radius: 10px;
+		background-color: transparent;
+	}
+</style>
+<div  class="container">
+	<div class="col-lg-6">
+	<br>
+		
+			  <div class="input-group">
+			    <label  class="col-sm-2 control-label">Artist</label>
+			    <div class="col-sm-10">
+			     <div class="input-group">
+			     <input type="text" class="form-control has-success" id="inputArtist" placeholder="Artist">
+				     <span class="input-group-btn">
+				        <button class="btn btn-default" type="submit">Go!</button>
+				     </span>
+			      	
+				 </div>
+			    </div>
+			  </div>
+		
+	</div>
+
+	<div class="col-lg-6">
+		<ul id="search_results" style="font-size:26px;">
+		</ul>
+	</div>
+
+	<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="albumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Albums</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="container-fluid">
+        <ul id='album_results' style="padding-left:0;">
+        </ul>
+        </div>
+      </div>
+          </div>
+  </div>
+</div>
+<div class="modal fade" id="tracksModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tracks</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="container-fluid">
+      	<div class="col-s-6">
+        <ul id='tracks_results' style="padding-left:0;">
+
+        </ul>
+        </div>
+
+        </div>
+      </div>
+          </div>
+  </div>
+</div>
+</div>
+
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="main.js"></script>
+	
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Phrase Generator</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<style>
+ul {
+	list-style: none;
+}
+.container {
+	margin: auto;
+	width: 50%;
+	text-align: center;
+	border: solid;
+	
+}
+body {
+	text-align: center;
+
+}
+</style>
+	<div class="container">
+	<span id = "phrase" style = "font-size: 100px;"> </span>
+	<br>
+	<button id = "refresh">Refresh</button>
+	</div>
+	<br>
+	<input type="text" value="haha" style="text-align:center; margin: auto;">
+	<br>
+	<a class = "toggle-button" href=""> Show/Hide </a>
+	<br>
+
+	<ul class="toggle">
+	</ul>
+
+
+
+<script>
+	var phrase_array = ["One",	"Two",	"Three"];
+	
+
+		function genText(){		
+
+			var num = Math.random() * phrase_array.length
+			string = phrase_array[Math.floor(num)]
+			return string
+		};
+
+	$('#phrase').text(genText);
+
+	
+	$('#refresh').on('click', function(event){
+		event.preventDefault();
+		$('#phrase').text(genText);
+		
+	});
+	
+		$('input').keypress(function(e) {
+		    if(e.which == 13) {
+		        phrase_array.push($('input').prop('value'));
+		        $('.toggle').append('<li>' + $('input').prop('value') + "<button class = ' " +  $('input').prop('value') +  "'>X</button></li>" );
+		    }
+		});
+
+		$('.toggle-button').on('click', function(event) {
+			event.preventDefault();
+			$('.toggle').slideToggle();
+		})
+		
+		$('button').on('click', function(event) {
+			phrase_array.remove(event.currentTarget.val());
+			console.log("TEXT");
+		});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
