@@ -211,9 +211,15 @@ function handleTracks(data) {
 
 	data.items.forEach(function(track) {
 		console.log(track.name)
-		$('#tracks_results').append('<li>' + "<a href= '" + track.preview_url + "' target='_blank'>"+ track.name +"</a>" +'</li>')			
+		$('#tracks_results').append('<li>' + "<a href= '#' id= 'track' target='_blank'>"+ track.name +"</a>" +'</li>');	
+		$('#track').on('click', playTrack(event,track.preview_url))	
 	});
 
 	$('#tracksModal').modal('toggle')
 };
+function playTrack(event,src){
+	event.preventDefault
+
+	$('iframe').prop('src', src)
+}
 </script>

@@ -38,7 +38,7 @@ function handleAlbums(data) {
 	data.items.forEach(function(album,index) {
 		if (previousName != album.name){
 
-			$('#album_results').append('<li>'+"<button type='album' id = '"+ album.id + "'>" + album.name + " <img class = 'img-circle' src='" + album.images[0].url +"' width=10%>" +"</button>"+'</li>')
+			$('#album_results').append('<li>'+"<a type='album' id = '"+ album.id + "'>" + album.name + " <img class = 'img-circle' src='" + album.images[0].url +"' width=10%>" +"</a>"+'</li>')
 		}
 	 previousName = album.name
 	});
