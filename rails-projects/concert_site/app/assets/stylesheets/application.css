@@ -21,6 +21,8 @@
  	padding-bottom: 70px;
  	background-color: grey;
  	background-image: url('main_background.jpg');
+ 	background-attachment: fixed;
+	background-size: cover;
  	
  }
  ul {
