@@ -46,6 +46,7 @@ class ConcertsController < ApplicationController
 		@concerts_month = Concert.where('extract(month from date) = ?', Time.now.month).where('extract(year from date) = ?', Time.now.year).order("extract(day from date) ASC")
 			render 'home'
 	end
+	
 
 	def update
 

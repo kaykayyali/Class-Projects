@@ -8,10 +8,14 @@
 			<div class="panel-body" style="padding: 0px;">
 <div class="container-fluid">
 			<h1 class="jumbotron" style="padding: 5px"> <%= @concert.artist %> <br><small><%= "At " + @concert.venue%></small></h1>
+
 				
 				<div class="col-xs-6">
 					<img class= "img-rounded" src="<%=@artist.images[0]['url']%>" width = "200px">						
-						<iframe src="<%= @artist.top_tracks(:US)[0].preview_url%>" width="200" height="70" frameborder="0" allowtransparency="true"></iframe>					
+						<iframe src="<%= @artist.top_tracks(:US)[0].preview_url%>" width="200" height="70" frameborder="0" allowtransparency="true"></iframe>	
+						<br>
+						<button class = "btn btn-default albumsLink" id = "<%= @artist.id %>">View Albums</button>	
+										
 				</div>
 
 						<div class="col-xs-6">
@@ -36,16 +40,34 @@
 
 					<div class="input-group">
 						<%= f.label :title, class: "form-label" %>
-						<%= f.text_field :title, class: "form-control"%>
+						<%= f.text_field :title, class: "form-control titleInput"%>
 					</div>
 					<div class="input-group">
-						<%= f.label :description, class: "form-label" %>
-						<%= f.text_field :description, class: "form-control"%>
+						<%= f.label :description, class: "form-label " %>
+						<%= f.text_field :description, class: "form-control descriptionInput"%>
 					</div>
-					
-					<button class="btn btn-primary" style="margin-top: 15px" type="submit">Submit</button>
-				
 					<%end%>
+					
+					<button class="btn btn-primary" style="margin-top: 15px" type="submitComments">Submit</button>
+
+					<script>
+					
+						$('button[type="submitComments"').on('click', postComments);
+
+						function postComments() {
+							var jsonpack = {
+									concert_id: "<%= @concert.id %>",
+									title: $('.titleInput').val(),
+									description: $('.descriptionInput').val(),
+									authenticity_token: window._token
+								}
+							$.post('http://localhost:3000/addcomments/'+'<%= @artist.id %>', jsonpack)
+
+							getComments();
+						}
+
+					</script>
+					
 				</div>
 			</div>
 						</div>
@@ -67,20 +89,131 @@
 				
 			
 			</div>
+				
+			<div class="comments">
+			<script>
+
+				function getComments() {
+					var url = 'http://localhost:3000/getcomments/' + "<%= @artist.id %>"
+					console.log(url)
+					$.get(url, handleComments)
+				}
+
+				function handleComments(data) {
+					$('.comments').empty()
+					data.forEach(function(comment){
+						var line1 = "<div class='panel panel-default' style='padding: 10px;'>"
+						var line2 = "<div class='panel-heading'>"
+						var line3 = "<h4>" + comment.title + "</h4>"
+						var line4 = "<h4><small>" + comment.description + "</small></h4>"
+						var line5 = "</div>"
+						var line6 = "</div>"
+						$('.comments').append( line1 + line2 + line3 + line4 + line5 + line6);
 
 
-			<% @concert.comments.each do |comment| %>
+					});
 
-				<div class="panel panel-default" style="padding: 10px;">
-					<div class="panel-heading">
-						<h4><%= comment.title %></h4>
-						<h4><small><%= comment.description %></small></h4>
-					</div>	
-				</div>
-			<% end %>
+				};
+
+				getComments();
+			</script>
+			</div>
+
 			
 
 			
 
 	</div>		
 </div>
+
+
+<div class="modal fade" id="albumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Albums</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="container-fluid">
+        <ul id='album_results' style="padding-left:0;">
+        </ul>
+        </div>
+      </div>
+          </div>
+  </div>
+</div>
+<div class="modal fade" id="tracksModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tracks</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="container-fluid">
+      	<div class="col-s-6">
+        <ul id='tracks_results' style="padding-left:0;">
+
+        </ul>
+        </div>
+
+        </div>
+      </div>
+          </div>
+  </div>
+</div>
+
+<script>
+$('.albumsLink').on('click', function(event){
+	event.preventDefault;
+	
+		console.log(event.target.id);
+		var searchTerm = event.target.id
+		var  url = "https://api.spotify.com/v1/artists/"+ searchTerm +"/albums" 
+		console.log (url)
+		var request = $.get(url, handleAlbums)
+	});
+
+function handleAlbums(data) {
+	console.log(data)
+	$('#album_results').empty()
+	var previousName = ""
+	data.items.forEach(function(album,index) {
+		if (previousName != album.name){
+
+			$('#album_results').append('<li>'+
+				"<button style='margin-top:5px;margin-bottom:5px;' class = 'btn btn-default' type='album' id = '"+ album.id + "'>" +'<span style = "font-size:22px; line-height:2;">'+
+				 album.name + '</span>'+ 
+				  " <img class = 'img-thumbnail pull-right' src='" + album.images[0].url +"' width=11%>" +"</button>"+'</li>')
+		}
+	 previousName = album.name
+	});
+
+	$('button[type="album"]').on('click', function(event){		
+		console.log(event.target.id);
+		var searchTerm = event.target.id
+		var  url = "https://api.spotify.com/v1/albums/"+ searchTerm +"/tracks" 
+		console.log (url)
+		var request = $.get(url, handleTracks)
+	});
+
+	$('#albumModal').modal('toggle')
+
+};
+
+function handleTracks(data) {
+	console.log(data)
+	$('#albumModal').modal('toggle')
+
+	$('#tracks_results').empty()
+	var previousName = ""
+
+	data.items.forEach(function(track) {
+		console.log(track.name)
+		$('#tracks_results').append('<li>' + "<a href= '" + track.preview_url + "' target='_blank'>"+ track.name +"</a>" +'</li>')			
+	});
+
+	$('#tracksModal').modal('toggle')
+};
+</script>
