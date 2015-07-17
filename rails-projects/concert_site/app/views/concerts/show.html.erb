@@ -22,7 +22,7 @@
 							<p> <%= @concert.artist + " At " + @concert.venue + " ticket price is: $" + @concert.ticket_price.to_s%> </p>
 							<p> <%= "Concert will be held on " + pretty_date(@concert.date) + " in beautiful " + @concert.city %></p>
 						<p><strong>Genres:</strong></p> 
-								<ul>
+								<ul id='genreList'>
 								<% @artist.genres.each do |genre| %> 
 								
 								<li>
@@ -33,9 +33,15 @@
 								</ul>
 								<div class="panel panel-default panel_white_trans" style="padding: 10px;">	
 				<div class="panel-heading panel_trans text-center">
-					<h1 class="panel-title">Add Comment</h1>
+
+					<h1 class="panel-title"><button class="btn btn-default" id="commentHeading">Add Comment</button></h1>
+					
 				</div>	
-				<div class="panel-body">
+
+				<div class="panel-body commentForm">
+				<script>
+					$('.commentForm').toggle()
+				</script>
 					<%= form_for([@concert, @comment]) do |f| %>
 
 					<div class="input-group">
@@ -47,6 +53,8 @@
 						<%= f.text_field :description, class: "form-control descriptionInput"%>
 					</div>
 					<%end%>
+
+					
 					
 					<button class="btn btn-primary" style="margin-top: 15px" type="submitComments">Submit</button>
 
@@ -62,7 +70,9 @@
 									authenticity_token: window._token
 								}
 							$.post('http://localhost:3000/addcomments/'+'<%= @artist.id %>', jsonpack)
-
+							$('.titleInput').prop('value', '');
+							$('.descriptionInput').prop('value', '');
+							$('.commentForm').slideToggle();
 							getComments();
 						}
 
@@ -83,7 +93,7 @@
 			<div class="panel panel-default" style="padding: 10px;">
 						
 				<div class="panel-heading text-center">
-					<h1 class="panel-title">Comments</h1>
+					<h1 class="panel-title ">Comments</h1>
 				</div>	
 
 				
@@ -127,7 +137,7 @@
 </div>
 
 
-<div class="modal fade" id="albumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade scroll" id="albumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -211,15 +221,21 @@ function handleTracks(data) {
 
 	data.items.forEach(function(track) {
 		console.log(track.name)
-		$('#tracks_results').append('<li>' + "<a href= '#' id= 'track' target='_blank'>"+ track.name +"</a>" +'</li>');	
-		$('#track').on('click', playTrack(event,track.preview_url))	
+		$('#tracks_results').append('<li>' + "<button  id= 'track' class='btn btn-default'>"+ track.name +"</button>" +'</li>');	
+		$('#track').on('click', playTrack(track.preview_url))	
 	});
 
 	$('#tracksModal').modal('toggle')
 };
-function playTrack(event,src){
-	event.preventDefault
+function playTrack(src){	
 
 	$('iframe').prop('src', src)
 }
+
+$('button[id="commentHeading"]').on('click', function(){ 
+						event.preventDefault; 
+						console.log('something');
+						$('#genreList').slideToggle();
+						$('.commentForm').slideToggle();
+					});
 </script>

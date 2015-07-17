@@ -25,6 +25,11 @@
 	background-size: cover;
  	
  }
+.over-hover:hover, .over-hover:visited, .over-hover:link, .over-hover:active {
+
+	text-decoration:none ;
+}
+
  ul {
  	list-style: none;
  }
@@ -57,6 +62,10 @@ p {
   .panel_white_trans {
  	background-color: rgba(255, 255, 255, .8);
  }
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
 
 
 
