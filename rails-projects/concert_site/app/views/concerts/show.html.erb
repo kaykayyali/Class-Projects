@@ -14,7 +14,7 @@
 					<img class= "img-rounded" src="<%=@artist.images[0]['url']%>" width = "200px">						
 						<iframe src="<%= @artist.top_tracks(:US)[0].preview_url%>" width="200" height="70" frameborder="0" allowtransparency="true"></iframe>	
 						<br>
-						<button class = "btn btn-default albumsLink" id = "<%= @artist.id %>">View Albums</button>	
+						<button class = "btn btn-primary albumsLink" id = "<%= @artist.id %>">View Albums</button>	
 										
 				</div>
 
@@ -34,7 +34,7 @@
 								<div class="panel panel-default panel_white_trans" style="padding: 10px;">	
 				<div class="panel-heading panel_trans text-center">
 
-					<h1 class="panel-title"><button class="btn btn-default" id="commentHeading">Add Comment</button></h1>
+					<h1 class="panel-title"><button class="btn btn-primary" id="commentHeading">Add Comment</button></h1>
 					
 				</div>	
 
@@ -63,17 +63,19 @@
 						$('button[type="submitComments"').on('click', postComments);
 
 						function postComments() {
+							console.log('<%= @concert.id %>')
 							var jsonpack = {
 									concert_id: "<%= @concert.id %>",
 									title: $('.titleInput').val(),
 									description: $('.descriptionInput').val(),
 									authenticity_token: window._token
 								}
+								console.log(jsonpack)
 							$.post('http://localhost:3000/addcomments/'+'<%= @artist.id %>', jsonpack)
 							$('.titleInput').prop('value', '');
 							$('.descriptionInput').prop('value', '');
 							$('.commentForm').slideToggle();
-							getComments();
+							$('#genreList').slideToggle();
 						}
 
 					</script>
@@ -99,18 +101,20 @@
 				
 			
 			</div>
-				
+		<div class="commentScroll">
 			<div class="comments">
 			<script>
 
 				function getComments() {
-					var url = 'http://localhost:3000/getcomments/' + "<%= @artist.id %>"
+					var url = 'http://localhost:3000/getcomments/' + "<%= @concert.id %>"
 					console.log(url)
+
 					$.get(url, handleComments)
 				}
-
+				var data_array = []
 				function handleComments(data) {
-					$('.comments').empty()
+					$('.comments').empty();
+					data.sort(function(a,b){return b.id-a.id})
 					data.forEach(function(comment){
 						var line1 = "<div class='panel panel-default' style='padding: 10px;'>"
 						var line2 = "<div class='panel-heading'>"
@@ -124,10 +128,11 @@
 					});
 
 				};
-
+				setInterval(function(){getComments()}, 1000);
 				getComments();
 			</script>
 			</div>
+		</div>
 
 			
 
@@ -220,17 +225,17 @@ function handleTracks(data) {
 	var previousName = ""
 
 	data.items.forEach(function(track) {
-		console.log(track.name)
-		$('#tracks_results').append('<li>' + "<button  id= 'track' class='btn btn-default'>"+ track.name +"</button>" +'</li>');	
-		$('#track').on('click', playTrack(track.preview_url))	
-	});
+		$('#tracks_results').append('<li>' + "<button  type='track' id= '"+track.preview_url+"' class='btn btn-default'>"+ track.name +"</button>" +'</li>');
 
+		
+	});
+	$('button[type="track"]').on('click', function(event) {
+		console.log('clicked')
+		$('iframe').prop('src', event.target.id)
+	})
 	$('#tracksModal').modal('toggle')
 };
-function playTrack(src){	
 
-	$('iframe').prop('src', src)
-}
 
 $('button[id="commentHeading"]').on('click', function(){ 
 						event.preventDefault; 

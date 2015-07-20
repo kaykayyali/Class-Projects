@@ -9,12 +9,18 @@ class CommentsController < ApplicationController
 
 	end
 	def send_comments
-		artist = Concert.find(params[:id])
+
+		artist = Concert.find(params[:id].chars.first)
+
+		artist.comments.order(created_at: :ASC)
+		
 		render(:json => artist.comments)
 	end
 
 	def add_comments
-		concert = Concert.find(params[:id])
+		p params
+		concert = Concert.find(params[:concert_id].chars.first)
+
 		comment = concert.comments.new(:title => params[:title],:description => params[:description] )
 		p concert
 		p comment

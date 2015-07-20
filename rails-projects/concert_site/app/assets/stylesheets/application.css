@@ -66,6 +66,11 @@ p {
     max-height: 420px;
     overflow-y: auto;
 }
+.commentScroll {
+	height: 447px;
+	max-height: 447px;
+    overflow-y: auto;
+}
 
 
 
