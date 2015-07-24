@@ -2,12 +2,20 @@
 <html>
 <head>
   <title>DeviseExample</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
+<% if notice.present? %>
+<div class="alert alert-info" role="alert"><%= notice%> </div>
+<% elsif alert.present? %>
+<div class="alert alert-danger" role="alert"><%= alert%> </div>
+<%end %>
+</div>
 <%= yield %>
 
 </body>
